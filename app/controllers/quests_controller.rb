@@ -5,6 +5,8 @@ class QuestsController < ApplicationController
   def index
     @quests = Quest.all
     @questnew = Quest.new
+
+    @photo = Photo.first
   end
 
   # GET /quests/1 or /quests/1.json
@@ -56,6 +58,20 @@ class QuestsController < ApplicationController
       format.html { redirect_to quests_path, status: :see_other, notice: "Quest was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def next
+    # If it's the last photo, it assigns the first one.
+    @photo = Photo.find_by("id > ?", params[:id].to_i) || Photo.first
+
+    render @photo # Renders _photo partial
+  end
+
+  def previous
+    # If it's the first photo, it assigns the last one
+    @photo = Photo.order(id: :desc).find_by("id < ?", params[:id].to_i) || Photo.last
+
+    render @photo # Renders _photo partial
   end
 
   private

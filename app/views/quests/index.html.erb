@@ -7,19 +7,9 @@
     </div>
     <hr class="w-full border-gray-300 mb-3">
     <div class="custom-box">
-      <%= image_tag("1310.png", alt: "1310 Image", class: "rounded-full w-32 h-32 object-cover mx-auto mb-3") %>
-      <div class="flex-row justify-evenly items-center">
-        <div>
-          <h1>My image</h1>
-        </div>>
-        <div>
-          <button class="left">
-
-          </button>
-          <button class="right">
-            
-          </button>
-        </div>>
+      <!-- <%= image_tag("1310.png", alt: "1310 Image", class: "rounded-full w-32 h-32 object-cover mx-auto mb-3") %> -->
+      <div class="relative w-full mt-3">
+        <%= render @photo %>
       </div>
     </div>
     
