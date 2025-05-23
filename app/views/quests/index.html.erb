@@ -1,24 +1,46 @@
-<div class="w-full h-full flex flex-col gap-4 md:flex-row items-center justify-center px-5 py-10">  
+<div class="w-full h-full flex flex-col gap-12 md:gap-4 md:flex-row items-center justify-center px-5 py-10">  
   
-  <div class="custom-box md:flex-1/4 justify-between items-center">
-    <h1 class="font-bold text-4xl">Quests</h1>
+  <div class="custom-box h-[90vh] flex-col gap-3 md:basis-2/5 justify-between items-center">
+    <div class="flex flex-row justify-between items-center font-medium mb-2">
+      <h1 class="text-xl sm:text-3xl text-center">⟡ Kandit Tanthanathewin</h1>
+      <h1 class="text-sm text-center hidden sm:block">ƃuᴉɯ</h1> 
+    </div>
+    <hr class="w-full border-gray-300 mb-3">
+    <div class="custom-box">
+      <%= image_tag("1310.png", alt: "1310 Image", class: "rounded-full w-32 h-32 object-cover mx-auto mb-3") %>
+      <div class="flex-row justify-evenly items-center">
+        <div>
+          <h1>My image</h1>
+        </div>>
+        <div>
+          <button class="left">
+
+          </button>
+          <button class="right">
+            
+          </button>
+        </div>>
+      </div>
+    </div>
+    
+   
     <%= link_to "New quest", new_quest_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
-  </div>
-  <div class="custom-box md:flex-1/4 w-full">
+
     <h1 class="font-bold text-4xl">New quest</h1>
 
     <%= render "form", quest: @questnew %>
+  </div>
+  <div class="custom-box h-[90vh] md:basis-[30%] w-full">
+   
 
   </div>
 
-  <div id="quests" class="custom-box md:flex-1/2 divide-y divide-gray-200 space-y-5">
+  <div id="quests" class="custom-box scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-black md:h-[90vh] md:basis-[30%] divide-y divide-gray-200 space-y-5">
     <% if @quests.any? %>
       <% @quests.each do |quest| %>
         <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
           <%= render quest %>
           <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= link_to "Show", quest, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= link_to "Edit", edit_quest_path(quest), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
             <%= button_to "Destroy", quest, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
           </div>
         </div>

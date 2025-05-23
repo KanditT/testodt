@@ -6,9 +6,9 @@ body {
   .custom-box {
     background-color: #161616;
     width: 100%;
-    height: 90vh;
     padding: 1rem;
     border-radius: 1rem;
     border-width: 2px;
     border-color: #6b7280; /* Tailwind's gray-500 */
+    overflow-y: auto;
   }
