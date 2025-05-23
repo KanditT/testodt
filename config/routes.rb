@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "slideshow/index"
   root "quests#index"
   resources :quests
 
