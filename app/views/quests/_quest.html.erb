@@ -5,6 +5,12 @@
   </div>
   <div>
     <strong class="block font-medium mb-1">Status:</strong>
-    <%= quest.status? ? "Yes" : "No" %>
+    <%= form_with model: quest, local: true, html: { class: "inline-block" } do |form| %>
+      <%= form.check_box :status, { 
+            checked: quest.status?, 
+            onchange: "this.form.submit();" 
+          }, "true", "false" %>
+      <%= form.label :status, quest.status? ? "Active" : "Inactive", class: "ml-2" %>
+    <% end %>
   </div>
 </div>

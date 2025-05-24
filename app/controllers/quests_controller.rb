@@ -3,6 +3,8 @@ class QuestsController < ApplicationController
 
   # GET /quests or /quests.json
   def index
+    @questschecked = Quest.where(status: true)
+    @questsunchecked = Quest.where(status: false)
     @quests = Quest.all
     @questnew = Quest.new
 
@@ -41,7 +43,7 @@ class QuestsController < ApplicationController
   def update
     respond_to do |format|
       if @quest.update(quest_params)
-        format.html { redirect_to @quest, notice: "Quest was successfully updated." }
+        format.html { redirect_to quests_path  }
         format.json { render :show, status: :ok, location: @quest }
       else
         format.html { render :edit, status: :unprocessable_entity }
