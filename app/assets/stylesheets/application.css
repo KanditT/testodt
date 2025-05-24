@@ -1,14 +1,14 @@
 body {
-    background-color: #272729;
+    background-color: #34343c;
     color: #ffffff;
   }
 
   .custom-box {
-    background-color: #161616;
+    background-color: #050400;
     width: 100%;
     padding: 1rem;
     border-radius: 1rem;
     border-width: 2px;
-    border-color: #6b7280; /* Tailwind's gray-500 */
+    border-color: #adadb7; 
     overflow-y: auto;
   }
