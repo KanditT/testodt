@@ -24,7 +24,8 @@
     <%= render "form", quest: @questnew %>
   </div>
   <div class="custom-box p-4 md:h-[90vh] md:basis-[30%] ">
-    <div id="quests" class="md:overflow-y-auto md:h-[85vh] md:pr-3 w-full  
+    <p class="text-2xl mt-1">My Missions</p>
+    <div id="quests" class="md:overflow-y-auto md:h-[81vh] md:pr-3 w-full  
       [&::-webkit-scrollbar]:w-1
       [&::-webkit-scrollbar-track]:rounded-full
       [&::-webkit-scrollbar-track]:bg-none
@@ -34,8 +35,14 @@
         <% @questsunchecked.each do |quest| %>
           <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
             <%= render quest %>
-            <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-              <%= button_to "Destroy", quest, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+            <div class="w-auto flex flex-row space-x-2 space-y-2">
+              <%= button_to quest, method: :delete,
+                  class: "w-10 h-10 rounded-full bg-red-600 hover:bg-red-500 flex items-center justify-center text-white",
+                  data: { turbo_confirm: "Are you sure?" } do %>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5-4h4a1 1 0 011 1v1H9V4a1 1 0 011-1z" />
+                </svg>
+              <% end %>
             </div>
           </div>
         <% end %>
@@ -46,7 +53,8 @@
   </div>
 
  <div class="custom-box p-4 md:h-[90vh] md:basis-[30%] ">
-  <div id="quests" class="md:overflow-y-auto md:h-[85vh] md:pr-3 w-full  
+  <p class="text-2xl mt-1 line-through">Mission completed</p>
+  <div id="quests" class="md:overflow-y-auto md:h-[81vh] md:pr-3 w-full  
     [&::-webkit-scrollbar]:w-1
     [&::-webkit-scrollbar-track]:rounded-full
     [&::-webkit-scrollbar-track]:bg-none
@@ -65,7 +73,6 @@
               </svg>
             <% end %>
           </div>
-          
         </div>
       <% end %>
     <% else %>
