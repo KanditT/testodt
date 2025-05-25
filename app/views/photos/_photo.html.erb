@@ -2,7 +2,7 @@
 
     <!-- IMAGE -->
     <div class="relative flex overflow-hidden h-full rounded-lg items-center justify-center">
-        <%= image_tag asset_path(photo.url), class: "h-[30vh]" %>
+        <%= image_tag asset_path(photo.url), class: "h-[30vh] sm:h-[35vh]" %>
     </div>
     <!-- NAV CONTROLS -->
     <div class="flex flex-col sm:flex-row gap-3 justify-between px-4 items-center align-middle mt-4">
@@ -18,7 +18,7 @@
                 <%= button_to previous_quest_path(photo),
                     class: 'px-4 cursor-pointer group focus:outline-none relative z-10' do %>
                     <span
-                        class="inline-flex items-center justify-center w-10 h-10 hover:translate-y-1 rounded-full bg-[#d9b344] group-hover:bg-[#d9b344] group-focus:bg-[#94761c] group-focus:ring-4 group-focus:ring-[#3b2e0b] group-focus:outline-none">
+                        class="inline-flex items-center justify-center w-10 h-10 hover:translate-y-1 rounded-full bg-[#d9b344] group-hover:bg-[#d9b344] group-active:bg-[#94761c] group-active:ring-4 group-active:ring-[#3b2e0b] group-active:outline-none">
                         <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -31,7 +31,7 @@
                 <div class="absolute ml-4 mt-1 inset-0 w-10 h-10 rounded-full bg-[#775f17]"></div>
                 <%= button_to next_quest_path(photo), class: ' px-4 cursor-pointer group focus:outline-none relative z-10' do %>
                     <span
-                        class="inline-flex items-center justify-center w-10 h-10 hover:translate-y-1 rounded-full bg-[#d9b344] group-hover:bg-[#d9b344] group-focus:bg-[#94761c] group-focus:ring-4 group-focus:ring-[#3b2e0b] group-focus:outline-none">
+                        class="inline-flex items-center justify-center w-10 h-10 hover:translate-y-1 rounded-full bg-[#d9b344] group-hover:bg-[#d9b344] group-active:bg-[#94761c] group-active:ring-4 group-active:ring-[#3b2e0b] group-active:outline-none">
                         <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

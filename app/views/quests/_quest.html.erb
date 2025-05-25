@@ -1,15 +1,15 @@
-<div id="<%= dom_id quest %>" class="w-full sm:w-auto my-5 space-y-5 flex flex-row">
+<div id="<%= dom_id quest %>" class="w-full sm:w-auto space-y-5 flex flex-row gap-3 items-center">
 
-  <div>
+  <div class="flex items-center justify-center mt-7">
     <%= form_with model: quest, url: quest_path(quest), local: false, html: { class: "inline-block" } do |form| %>
-      <%= form.check_box :status, { checked: quest.status?, onchange: "this.form.requestSubmit();" }, "true" , "false"
-        %>
-        <%= form.label :status, quest.status? ? "DONE" : "Doing" , class: "ml-2" , id: "status_label_#{quest.id}" %>
-          <% end %>
+      <%= form.check_box :status,
+          { checked: quest.status?, onchange: "this.form.requestSubmit();", class: "w-5 h-5 accent-green-600 rounded focus:ring-2 focus:ring-green-400" },
+          "true", "false" %>
+    <% end %>
   </div>
-  <div>
-    <h1 class="<%= quest.status? ? 'line-through' : '' %>">
-      <%= quest.name %>
-    </h1>
-  </div>
+
+  <h1 class="<%= quest.status? ? 'line-through text-gray-400' : '' %> text-lg font-medium self-center">
+    <%= quest.name %>
+  </h1>
+
 </div>
