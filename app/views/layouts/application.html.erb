@@ -19,11 +19,12 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "snow_background", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto  sm:px-0 flex">
+  <body class="snow-bg">
+    <main class="container mx-auto sm:px-0 flex">
       <%= yield %>
     </main>
   </body>

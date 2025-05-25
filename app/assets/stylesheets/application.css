@@ -1,14 +1,16 @@
 body {
     background-color: #34343c;
-    color: #ffffff;
+    color: #050400;
+    z-index: -10;
   }
 
   .custom-box {
-    background-color: #050400;
+    background-color: #d2dadd;
     width: 100%;
     padding: 1rem;
     border-radius: 1rem;
     border-width: 2px;
-    border-color: #adadb7; 
+    border-color: #82939a; 
     overflow-y: auto;
   }
+
