@@ -7,3 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+#
+Photo.create(title: "Logo 1310", url: "1310.png")
+Photo.create(title: "CC Logo", url: "blue_cclogo.png")
+Photo.create(title: "My Image", url: "myImage.png")
