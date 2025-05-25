@@ -27,40 +27,58 @@ class QuestsController < ApplicationController
   # POST /quests or /quests.json
   def create
     @quest = Quest.new(quest_params)
+    @quest.status = false
 
     respond_to do |format|
       if @quest.save
-        format.html { redirect_to quests_path }
+        format.html {
+          flash[:notice] = "Quest created successfully"
+          redirect_to root_path
+        }
         format.json { render :show, status: :created, location: @quest }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        @questschecked = Quest.where(status: true)
+        @questsunchecked = Quest.where(status: false)
+        @quests = Quest.all
+        @questnew = @quest
+        @photo = Photo.first
+
+        format.html { render "index", status: :unprocessable_entity }
         format.json { render json: @quest.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  def destroy
+    @quest.destroy!
+
+    respond_to do |format|
+      format.html {
+        flash[:notice] = "Quest deleted successfully"
+        redirect_to root_path, status: :see_other
+      }
+      format.json { head :no_content }
+    end
+  end
+
   # PATCH/PUT /quests/1 or /quests/1.json
   def update
+    Rails.logger.debug "Quest update params: #{params.inspect}"
+    Rails.logger.debug "Quest before update: #{@quest.inspect}"
+
     respond_to do |format|
       if @quest.update(quest_params)
-        format.html { redirect_to quests_path  }
-        format.json { render :show, status: :ok, location: @quest }
+        Rails.logger.debug "Quest after update: #{@quest.inspect}"
+        format.html { redirect_to root_path }
+        format.json { render json: { status: "success" } }
       else
+        Rails.logger.debug "Quest update failed: #{@quest.errors.inspect}"
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @quest.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /quests/1 or /quests/1.json
-  def destroy
-    @quest.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to quests_path, status: :see_other, notice: "Quest was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
 
   def next
     # If it's the last photo, it assigns the first one.
@@ -85,5 +103,6 @@ class QuestsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def quest_params
       params.expect(quest: [ :name, :status ])
+      params.require(:quest).permit(:name, :status)
     end
 end

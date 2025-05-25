@@ -12,10 +12,13 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-[#ffffff]", {"border-gray-400 focus:outline-blue-600": quest.errors[:name].none?, "border-red-400 focus:outline-red-600": quest.errors[:name].any?}] %>
+    <%= form.text_field :name, 
+        id: "quest_name",  # Added explicit ID for tests
+        class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-[#ffffff]", {"border-gray-400 focus:outline-blue-600": quest.errors[:name].none?, "border-red-400 focus:outline-red-600": quest.errors[:name].any?}] %>
   </div>
 
-  <div class=" relative items-center text-center">
-    <%= form.submit class: "w-full z-10 relative sm:w-auto rounded-md px-3.5 py-2.5 bg-[#8ac44b] hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  <div class="relative items-center text-center">
+    <%= form.submit "Create Quest",  # Explicit button text
+        class: "w-full z-10 relative sm:w-auto rounded-md px-3.5 py-2.5 bg-[#8ac44b] hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

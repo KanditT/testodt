@@ -24,8 +24,42 @@
   </head>
 
   <body class="snow-bg">
+    <!-- Flash Messages with specific IDs -->
+    <% if notice %>
+      <div id="flash-notice" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-green-50 text-green-700 px-4 py-3 rounded-md shadow-lg border border-green-200">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div id="flash-alert" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-red-50 text-red-700 px-4 py-3 rounded-md shadow-lg border border-red-200">
+        <%= alert %>
+      </div>
+    <% end %>
+
     <main class="container mx-auto sm:px-0 flex">
       <%= yield %>
     </main>
+
+    <!-- Auto-hide flash messages with specific targeting -->
+    <% if notice || alert %>
+      <script>
+        setTimeout(function() {
+          // Only target elements with flash message IDs
+          const flashNotice = document.getElementById('flash-notice');
+          const flashAlert = document.getElementById('flash-alert');
+          
+          [flashNotice, flashAlert].forEach(function(element) {
+            if (element) {
+              element.style.transition = 'opacity 0.5s';
+              element.style.opacity = '0';
+              setTimeout(function() {
+                element.remove();
+              }, 500);
+            }
+          });
+        }, 3000); // Hide after 3 seconds
+      </script>
+    <% end %>
   </body>
 </html>
