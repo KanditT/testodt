@@ -30,7 +30,7 @@ class QuestsController < ApplicationController
 
     respond_to do |format|
       if @quest.save
-        format.html { redirect_to quests_path }
+        format.html { redirect_to root_path }
         format.json { render :show, status: :created, location: @quest }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class QuestsController < ApplicationController
   def update
     respond_to do |format|
       if @quest.update(quest_params)
-        format.html { redirect_to quests_path  }
+        format.html { redirect_to root_path  }
         format.json { render :show, status: :ok, location: @quest }
       else
         format.html { render :edit, status: :unprocessable_entity }
